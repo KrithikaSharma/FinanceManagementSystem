@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h3>Register</h3>
+
+<form method="post">
+        <table>
+            <tr class="form-group">
+                <td><label for="Name">Name</label></td>
+                <td><input type="text" name="Name" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="DOB">Date of Birth</label></td>
+                <td><input type="date" name="DOB" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="emailid">EmailId</label></td>
+                <td><input type="email" name="emailid" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="phnNo">Phone No.</label></td>
+                <td><input type="tel" name="phnNo" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="username">User Name</label></td>
+                <td><input type="text" name="username" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="pwd">Password</label></td>
+                <td><input type="password" name="pwd" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="cpwd">Confirm Password</label></td>
+                <td><input type="password" name="cpwd" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="address">Address</label></td>
+                <td><input type="text" name="address" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="card">Card Type</label></td>
+                <td>
+                    <input type="radio" name="card" />Gold
+                    <input type="radio" name="card" />Titanium
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="bank">Bank</label></td>
+                <td><input type="text" name="bank" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="accountno">Account No</label></td>
+                <td><input type="text" name="accountno" /></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="ifsc">IFSC Code</label></td>
+                <td><input type="text" name="ifsc" /></td>
+            </tr>
+        </table>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-group-sm btn-primary">Register</button>
+        <button type="reset" class="btn btn-group-sm btn-primary">Reset</button>
+    </div>
+</form>
+<br />
+<div>
+    Already a member? <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login Here</a>
+</div>
