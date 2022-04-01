@@ -1,0 +1,85 @@
+﻿@model Finance_29Mar.Models.Customer
+@{
+    ViewData["Title"] = "Register";
+}
+
+<body style="background-image: url('C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\images.jpg'); background-repeat: no-repeat; background-size: auto;">
+    <h1>Register</h1>
+
+    <form asp-action="Register" method="post">
+        
+        <table>
+            <tr class="form-group">
+                <td><label for="Name">Name</label></td>
+                <td><input type="text" name="Name" /></td>
+                <td><span asp-validation-for="Name" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="phnNo">Phone No.</label></td>
+                <td><input type="tel" name="phnNo" /></td>
+                <td><span asp-validation-for="PhnNo" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="emailid">EmailId</label></td>
+                <td><input type="email" name="emailid" /></td>
+                <td><span asp-validation-for="Email" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="username">User Name</label></td>
+                <td><input type="text" name="username" /></td>
+                <td><span asp-validation-for="Username" class="text-danger"></span></td>
+            </tr>
+
+            <tr class="form-group">
+                <td><label for="pwd">Password</label></td>
+                <td><input type="password" name="pwd" /></td>
+                <td><span asp-validation-for="Password" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="cpwd">Confirm Password</label></td>
+                <td><input type="password" name="cpwd" /></td>
+                <td><span asp-validation-for="Cpassword" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="bank">Bank Name</label></td>
+                <td><input type="text" name="Bank" /></td>
+                <td><span asp-validation-for="Bank" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="accno">Account Number</label></td>
+                <td><input type="number" name="AccNo" /></td>
+                <td><span asp-validation-for="AccNo" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="ifsc">IFSC Code</label></td>
+                <td><input type="text" name="IfscCode" /></td>
+               <td><span asp-validation-for="IfscCode" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="dob">Date of birth</label></td>
+                <td><input type="date" name="Dob" /></td>
+                <td><span asp-validation-for="Dob" class="text-danger"></span></td>
+            </tr>
+            <tr class="form-group">
+                <td><label for="ctype">Card Type</label></td>
+                <td>
+                    <input type="radio" name="card" />Gold
+                    <input type="radio" name="card" />Titanium
+                </td>
+                <td><span asp-validation-for="Cpassword" class="text-danger"></span></td>
+            </tr>
+        </table>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-group-sm btn-primary">Register</button>
+            <button type="reset" class="btn btn-group-sm btn-primary">Reset</button>
+        </div>
+    </form>
+    <br />
+    <div>
+        Already a member? <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login Here</a>
+    </div>
+    <div>
+        <a asp-action="Index">Back to Home Page</a>
+    </div>
+</body>
