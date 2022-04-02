@@ -13,7 +13,8 @@ namespace Finance_29Mar.Controllers
         FinanceContext fc = new FinanceContext();
         public IActionResult Index()
         {
-            return View();
+            List<Product> productlist = fc.Products.ToList();
+            return View(productlist);
         }
 
         public IActionResult Register()
@@ -25,7 +26,11 @@ namespace Finance_29Mar.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(Customer c)
         {
-            if(ModelState.IsValid)
+            fc.Add(c);
+            fc.SaveChanges();
+            return View("Display", "Product");
+            /*
+            if (ModelState.IsValid)
             {
                 fc.Add(c);
                 fc.SaveChanges();
@@ -35,6 +40,7 @@ namespace Finance_29Mar.Controllers
             {
                 return View();
             }
+            */
         }
         public IActionResult Login()
         {

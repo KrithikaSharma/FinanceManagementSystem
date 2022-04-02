@@ -33,5 +33,10 @@ namespace Finance_29Mar.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Content()
+        {
+            return View();
+        }
     }
 }

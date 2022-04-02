@@ -23,7 +23,7 @@ namespace Finance_29Mar.Models
 
         [Required(ErrorMessage = "Phone Number cannot be blank")]
         [Display(Name = "Phone Number")]
-        [RegularExpression("/[0-9]{10}")]
+        [RegularExpression("[0-9]{10}")]
         public decimal? PhnNo { get; set; }
 
         [Required(ErrorMessage = "Email cannot be blank")]

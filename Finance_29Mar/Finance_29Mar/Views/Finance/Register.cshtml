@@ -3,9 +3,8 @@
     ViewData["Title"] = "Register";
 }
 
-<body style="background-image: url('C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\images.jpg'); background-repeat: no-repeat; background-size: auto;">
+<body style="background-image: url('C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\images.jpg'); background-repeat: no-repeat; background-size: auto;">
     <h1>Register</h1>
-
     <form asp-action="Register" method="post">
         
         <table>
@@ -66,7 +65,7 @@
                     <input type="radio" name="card" />Gold
                     <input type="radio" name="card" />Titanium
                 </td>
-                <td><span asp-validation-for="Cpassword" class="text-danger"></span></td>
+                <td><span asp-validation-for="Cardtype" class="text-danger"></span></td>
             </tr>
         </table>
 

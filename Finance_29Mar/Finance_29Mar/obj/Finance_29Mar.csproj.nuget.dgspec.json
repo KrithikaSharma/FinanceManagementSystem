@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj": {}
+    "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj": {
+    "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj",
+        "projectUniqueName": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj",
         "projectName": "Finance_29Mar",
-        "projectPath": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj",
+        "projectPath": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\Finance_29Mar.csproj",
         "packagesPath": "C:\\Users\\krith\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\Finance_29Mar\\Finance_29Mar\\obj\\",
+        "outputPath": "C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\FMS\\Finance_29Mar\\Finance_29Mar\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
