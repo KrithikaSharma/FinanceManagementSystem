@@ -36,10 +36,13 @@ insert into Customer values('Shamshuddin Nalaband',9581704870,'shamshuddin.nalba
 insert into Customer values('Sahir',7006812967,'sahir.bhat@zensar.com','SMBhat','SahirMB967','SahirMB967', 'idfc','086108193267','idfc2255',cast('1999-08-23' as date),'T')
 
 -- insert into  product
-insert into Product values(51,'Samsung Microwave Oven','C:\Users\krith\OneDrive\Desktop\Finance\Product Images\Microwave oven',3,'28L, Black Color',43200.00,98200.00)
-insert into Product values(101,'iphone 12','C:\Users\krith\OneDrive\Desktop\Finance\Product Images\iphone 12',9,'128gb 6.1inch 12mpcamera ',70990.00,120700.00)
-insert into Product values(102,'Oneplus 9 pro 5g','C:\Users\krith\OneDrive\Desktop\Finance\Product Images\oneplus 9pro 5g',15,'Black Color 64gb 7200mah ',29890.00,65200.00)
-insert into Product values(201,'Mi Led tv 2c','C:\Users\krith\OneDrive\Desktop\Finance\Product Images\Mi led tv 4c',5,'led smart 52inches',31250.00,45078.00)
+insert into Product values(51,'Samsung Microwave Oven','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\Microwave_oven.jpg',3,'28L, Black Color',43200.00,98200.00)
+insert into Product values(101,'iphone 12','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\iphone_12.jpg',9,'128gb 6.1inch 12mpcamera ',70990.00,120700.00)
+insert into Product values(102,'Oneplus 9 pro 5g','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\oneplus_9pro_5g.jpg',15,'Black Color 64gb 7200mah ',29890.00,65200.00)
+insert into Product values(201,'Mi Led tv 2c','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\Mi_led_tv_4c.jpg',5,'led smart 52inches',31250.00,45078.00)
+
+insert into Product values(301,'Refrigerator','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\Refrigrator.jpg',8,'Whirlpool 245Ltr 4* double door ',26490.00,56120.00)
+insert into Product values(401,'Washing Machine','C:\Users\krith\OneDrive\Desktop\Finance\ProductImages\washingmachine.jpg',6,'LG Front Load with Diamond Drum & Ceramic Heater 6.0Kg',23490.00,27550.00)
 
 --insert into Purchase
 insert into Purchase values(201,3,6,cast(GETDATE() as date),31250.00,6250)
@@ -78,6 +81,14 @@ select * from CardStatus
 --drop table TransactionHistory
 --drop table CardStatus
 
+-- ************						Stored Procedures					*********************
+
+-- procedure for login
+create or alter proc sp_login @usrname nvarchar(50), @pswd nvarchar(50), @isValid bit Out
+as
+begin
+set @isValid=(select count(1) from Customer where username=@usrname and [Password]=@pswd)
+end
 
 
 
