@@ -2,18 +2,22 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-@foreach (var item in Model)
-{
-    <p>Products Available are...</p>
-    @*
-    <div>
-        <img src=@item.Image height="500" width="800" alt=@item.ProductName/>
-        <p><b>@item.ProductName</b></p><br />
-        <p>@item.Description</p><br />
-        <h5>@item.ProductCost</h5><p></p>
-    </div>
-   *@
-}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card" style="width:18rem">
+                <img class="card-img-top" src='C:\\Users\\krith\\OneDrive\\Desktop\\Finance\\ProductImages\\Microwave_oven.jpg' style="width:100%" alt=@item.ProductName />
+                <div class="card-body">
+                    <h5>@item.ProductName</h5>
+                    <p class="card-text">@item.Description</p><br />
+                    <h5 class="card-text">@item.ProductCost</h5>
+                    <p class="card-text"><strike class="text-danger">@item.StrikedCost </strike></p>
+                    <a href="#" class="btn btn-info">Buy Product</a>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+</div>
 

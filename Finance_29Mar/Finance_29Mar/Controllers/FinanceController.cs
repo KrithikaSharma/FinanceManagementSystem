@@ -11,6 +11,14 @@ namespace Finance_29Mar.Controllers
     public class FinanceController : Controller
     {
         FinanceContext fc = new FinanceContext();
+        db dbobj = new db();
+
+        //private readonly FinanceContext _fcc;
+        //public FinanceController(FinanceContext f)
+        //{
+        //    _fcc = f;
+
+        //}
         public IActionResult Index()
         {
             List<Product> productlist = fc.Products.ToList();
@@ -26,25 +34,39 @@ namespace Finance_29Mar.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(Customer c)
         {
-            fc.Add(c);
-            fc.SaveChanges();
-            return View("Display", "Product");
-            /*
             if (ModelState.IsValid)
             {
                 fc.Add(c);
                 fc.SaveChanges();
+                TempData["msg"] = "User registered succesfully!!!";
                 return View("Display", "Product");
             }
             else
             {
+                TempData["msg"] = "Couldn't register, Try again!!!";
                 return View();
             }
-            */
         }
         public IActionResult Login()
         {
-            return RedirectToAction("Index");
+            return View();
         }
+
+        
+        [HttpPost]
+        public IActionResult Login([Bind] valLogin lg)
+        {
+            int res = dbobj.LoginCheck(lg);
+            if(res==1)
+            {
+                TempData["msg"] = "You are welcome to Login page!!!";
+            }
+            else
+            {
+                TempData["msg"] = "Incorrect details!!";
+            }
+            return View();
+        }
+        
     }
 }

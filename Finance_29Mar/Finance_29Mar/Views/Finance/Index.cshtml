@@ -4,50 +4,55 @@
     ViewData["Title"] = "Index";
 }
 
-<h1><centre>Zensar Finserv</centre></h1>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Content">FMS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Finance" asp-action="Register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Finance" asp-action="Login">Login</a>
-                    </li>
-                </ul>
+@using (Html.BeginForm("Index", "Finance", FormMethod.Post))
+{
+    <h1><centre>Zensar Finserv</centre></h1>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Content">FMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Finance" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Finance" asp-action="Login">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+    </header>
+    <body style="background-color:darkkhaki">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4">
+                    <div class="card" style="width:18rem">
+                        <img class="card-img-top" src="https://www.lg.com/in/microwave-ovens/lg-MJ2886BFUM" style="width:fit-content; height:fit-content" alt=@item.ProductName />
+                        <div class="card-body">
+                            <h5>@item.ProductName</h5>
+                            <p class="card-text">@item.Description</p><br />
+                            <h5 class="card-text">@item.ProductCost</h5>
+                            <p class="card-text"><strike class="text-danger">@item.StrikedCost </strike></p>
+                            <a asp-controller="finance" asp-action="Login" class="btn btn-info">Buy Product</a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
         </div>
-    </nav>
-</header>
-<body style="background-color: burlywood">
-    @foreach (var item in Model)
-    {
-        <p>Products Available are...</p>
-
-        <div>
-            <img src=@item.Image height="500" width="800" alt=@item.ProductName />
-            <p><b>@item.ProductName</b></p><br />
-            <p>@item.Description</p><br />
-            <h5>@item.ProductCost</h5>
-            <p><strike class="text-danger">@item.StrikedCost </strike></p>
-            <div class="form-group">
-                <button type="submit" class="btn btn-group-sm btn-primary" asp-a>Buy Now</button>
-            </div>
-        </div>
-
-    }
-</body>
+    </body>
+}
 
 

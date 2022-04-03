@@ -1,21 +1,37 @@
-﻿
+﻿@model Finance_29Mar.Models.valLogin
 @{
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
-<form asp-action="Login">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <table>
-        <tr class="form-group">
-            <td><label for="username">User Name</label></td>
-            <td><input type="text" name="UserName" /></td>
-            @*<td><span asp-validation-for="Name" class="text-danger"></span></td>*@
-        </tr>
-        <tr class="form-group">
-            <td><label for="pwd">Password</label></td>
-            <td><input type="password" name="Password" /></td>
-            @*<td><span asp-validation-for="phnNO" class="text-danger"></span></td>*@
-        </tr>
-        </table>
-</form>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <form class="form-horizontal" asp-action="Login">
+                    <h1>Login</h1>
+                    <div class="form-group">
+                        <lable class="control-label">UserName</lable>
+                        <input asp-for="lUN" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <lable class="control-label">Password</lable>
+                        <input asp-for="lpwd" class="form-control" type="password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @{
+        if (TempData["msg"] != null)
+        {
+            <script>
+                    alert('@TempData["msg"]')
+            </script>
+        }
+    }
+
+</body>
