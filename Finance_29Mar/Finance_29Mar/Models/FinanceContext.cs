@@ -21,10 +21,10 @@ namespace Finance_29Mar.Models
         public virtual DbSet<CardStatus> CardStatuses { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<EmiCard> EmiCards { get; set; }
+        public virtual DbSet<LoginDetail> LoginDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<TransactionHistory> TransactionHistories { get; set; }
-        //public DbSet<Customer> Customers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,7 +40,7 @@ namespace Finance_29Mar.Models
             modelBuilder.Entity<Admin>(entity =>
             {
                 entity.HasKey(e => e.Aid)
-                    .HasName("PK__Admin__C6970A10092F8115");
+                    .HasName("PK__Admin__C6970A1015A858CE");
 
                 entity.ToTable("Admin");
 
@@ -68,7 +68,7 @@ namespace Finance_29Mar.Models
             modelBuilder.Entity<CardStatus>(entity =>
             {
                 entity.HasKey(e => e.CardNo)
-                    .HasName("PK__CardStat__55FF25F1C47A6A32");
+                    .HasName("PK__CardStat__55FF25F15E6DA5A6");
 
                 entity.ToTable("CardStatus");
 
@@ -88,25 +88,25 @@ namespace Finance_29Mar.Models
                 entity.HasOne(d => d.Admin)
                     .WithMany(p => p.CardStatuses)
                     .HasForeignKey(d => d.Adminid)
-                    .HasConstraintName("FK__CardStatu__admin__25518C17");
+                    .HasConstraintName("FK__CardStatu__admin__01142BA1");
 
                 entity.HasOne(d => d.CusNoNavigation)
                     .WithMany(p => p.CardStatuses)
                     .HasForeignKey(d => d.CusNo)
-                    .HasConstraintName("FK__CardStatu__CusNo__2645B050");
+                    .HasConstraintName("FK__CardStatu__CusNo__02084FDA");
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CusNo)
-                    .HasName("PK__Customer__2F18696372A6439E");
+                    .HasName("PK__Customer__2F18696342988BB8");
 
                 entity.ToTable("Customer");
 
-                entity.HasIndex(e => e.PhnNo, "UQ__Customer__5AB97F81CB35E650")
+                entity.HasIndex(e => e.PhnNo, "UQ__Customer__5AB97F81EE1D800A")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Email, "UQ__Customer__AB6E6164A8D2B348")
+                entity.HasIndex(e => e.Email, "UQ__Customer__AB6E6164A58A3231")
                     .IsUnique();
 
                 entity.Property(e => e.CusNo).HasColumnName("CusNO");
@@ -124,7 +124,7 @@ namespace Finance_29Mar.Models
 
                 entity.Property(e => e.Cardtype)
                     .IsRequired()
-                    .HasMaxLength(1)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Cpassword)
@@ -157,6 +157,8 @@ namespace Finance_29Mar.Models
                     .HasColumnType("numeric(10, 0)")
                     .HasColumnName("PhnNO");
 
+                entity.Property(e => e.ResetPasswordCode).HasMaxLength(100);
+
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -167,7 +169,7 @@ namespace Finance_29Mar.Models
             modelBuilder.Entity<EmiCard>(entity =>
             {
                 entity.HasKey(e => e.Cardtype)
-                    .HasName("PK__EmiCard__E26074B130DF4518");
+                    .HasName("PK__EmiCard__E26074B17FD9555F");
 
                 entity.ToTable("EmiCard");
 
@@ -176,6 +178,21 @@ namespace Finance_29Mar.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.CardLimit).HasColumnType("decimal(10, 2)");
+            });
+
+            modelBuilder.Entity<LoginDetail>(entity =>
+            {
+                entity.HasKey(e => e.Loginid)
+                    .HasName("PK__LoginDet__1F5DF0A7232C233B");
+
+                entity.Property(e => e.Loginid).HasColumnName("loginid");
+
+                entity.Property(e => e.Password).HasMaxLength(20);
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -196,7 +213,7 @@ namespace Finance_29Mar.Models
             modelBuilder.Entity<Purchase>(entity =>
             {
                 entity.HasKey(e => new { e.BookingId, e.ProdId })
-                    .HasName("PK__Purchase__33D762B1ED6DC3CB");
+                    .HasName("PK__Purchase__33D762B105D18F5B");
 
                 entity.ToTable("Purchase");
 
@@ -213,19 +230,19 @@ namespace Finance_29Mar.Models
                 entity.HasOne(d => d.CusNoNavigation)
                     .WithMany(p => p.Purchases)
                     .HasForeignKey(d => d.CusNo)
-                    .HasConstraintName("FK__Purchase__CusNo__367C1819");
+                    .HasConstraintName("FK__Purchase__CusNo__09A971A2");
 
                 entity.HasOne(d => d.Prod)
                     .WithMany(p => p.Purchases)
                     .HasForeignKey(d => d.ProdId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Purchase__ProdID__3587F3E0");
+                    .HasConstraintName("FK__Purchase__ProdID__08B54D69");
             });
 
             modelBuilder.Entity<TransactionHistory>(entity =>
             {
                 entity.HasKey(e => e.TrnId)
-                    .HasName("PK__Transact__B3442DC68C5DBB0A");
+                    .HasName("PK__Transact__B3442DC634F9611E");
 
                 entity.ToTable("TransactionHistory");
 
@@ -240,12 +257,12 @@ namespace Finance_29Mar.Models
                 entity.HasOne(d => d.CusNoNavigation)
                     .WithMany(p => p.TransactionHistories)
                     .HasForeignKey(d => d.CusNo)
-                    .HasConstraintName("FK__Transacti__CusNO__395884C4");
+                    .HasConstraintName("FK__Transacti__CusNO__0C85DE4D");
 
                 entity.HasOne(d => d.Prd)
                     .WithMany(p => p.TransactionHistories)
                     .HasForeignKey(d => d.PrdId)
-                    .HasConstraintName("FK__Transacti__PrdId__3A4CA8FD");
+                    .HasConstraintName("FK__Transacti__PrdId__0D7A0286");
             });
 
             OnModelCreatingPartial(modelBuilder);

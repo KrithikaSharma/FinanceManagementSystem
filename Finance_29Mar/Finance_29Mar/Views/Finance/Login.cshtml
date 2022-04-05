@@ -19,7 +19,10 @@
                         <input asp-for="lpwd" class="form-control" type="password" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Submit" />
+                        <input type="submit" class="btn btn-group-sm btn-primary"  value="Login" />
+                    </div>
+                    <div>
+                        <a asp-controller="finance" asp-action="ForgotPassword">Forgot Password?</a>
                     </div>
                 </form>
             </div>
@@ -33,5 +36,11 @@
             </script>
         }
     }
+    <div>
+        New member? <a class="text-dark" asp-area="" asp-controller="Finance" asp-action="Register">Register Here</a>
+    </div>
+    <div>
+        <a asp-action="Index">Back to Home Page</a>
+    </div>
 
 </body>

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Finance_29Mar.Models;
 using Finance_29Mar.Controllers;
+//using System.Web.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Finance_29Mar.Controllers
 {
@@ -13,12 +15,6 @@ namespace Finance_29Mar.Controllers
         FinanceContext fc = new FinanceContext();
         db dbobj = new db();
 
-        //private readonly FinanceContext _fcc;
-        //public FinanceController(FinanceContext f)
-        //{
-        //    _fcc = f;
-
-        //}
         public IActionResult Index()
         {
             List<Product> productlist = fc.Products.ToList();
@@ -36,7 +32,8 @@ namespace Finance_29Mar.Controllers
         {
             if (ModelState.IsValid)
             {
-                fc.Add(c);
+                fc.Customers.Add(c);
+                //fc.Add(c); 
                 fc.SaveChanges();
                 TempData["msg"] = "User registered succesfully!!!";
                 return View("Display", "Product");
@@ -46,27 +43,53 @@ namespace Finance_29Mar.Controllers
                 TempData["msg"] = "Couldn't register, Try again!!!";
                 return View();
             }
+
         }
+
         public IActionResult Login()
         {
             return View();
         }
 
-        
+
         [HttpPost]
         public IActionResult Login([Bind] valLogin lg)
         {
             int res = dbobj.LoginCheck(lg);
-            if(res==1)
+            if (res == 1)
             {
                 TempData["msg"] = "You are welcome to Login page!!!";
+                return RedirectToAction("Dashboard");
             }
             else
             {
                 TempData["msg"] = "Incorrect details!!";
+                //return View();
             }
             return View();
         }
-        
+
+        public IActionResult Dashboard()
+        {
+            FinanceContext f = new FinanceContext();
+            List<Product> productlist1 = f.Products.ToList();
+            return View(productlist1);
+        }
+
+        [Route("Finance/GetProductDetails/{id:int}")]
+        public IActionResult GetProductDetails(int id)
+        {
+            Product pList = (from p in fc.Products
+                             where id == p.ProductId
+                             select p).FirstOrDefault();
+            return View(pList);
+        }
+
+        [HttpPost]
+        public IActionResult GetProductDetails(int emi)
+        {
+
+        }
+
     }
 }

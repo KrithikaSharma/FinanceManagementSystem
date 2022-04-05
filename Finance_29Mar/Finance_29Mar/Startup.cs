@@ -30,6 +30,7 @@ namespace Finance_29Mar
             //services.AddDbContextPool<FinanceContext>(options =>
               // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<FinanceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +45,7 @@ namespace Finance_29Mar
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

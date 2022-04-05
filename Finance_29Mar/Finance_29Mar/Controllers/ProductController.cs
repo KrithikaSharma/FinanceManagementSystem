@@ -14,11 +14,12 @@ namespace Finance_29Mar.Controllers
         {
             return View();
         }
-
+        /*
         public IActionResult Display()
         {
             List<Product> productlist = fc.Products.ToList();
             return View(productlist);
         }
+        */
     }
 }

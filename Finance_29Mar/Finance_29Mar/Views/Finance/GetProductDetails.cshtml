@@ -1,0 +1,69 @@
+﻿@model Finance_29Mar.Models.Product
+@{
+    ViewData["Title"] = "GetProductDetails";
+}
+
+<h1>GetProductDetails</h1>
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Content">FMS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Finance" asp-action="Index">Home</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <p>Hi! Username</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div>
+    <div class="row">
+        <div class="col-sm-4"><img src="@Model.Image" style="height:300px;width:300px" /></div>
+        <div class="col-sm-4">
+            <div>
+                <h6>@Model.ProductName</h6>
+                <p>@Model.Description</p>
+                <p>@Model.ProductCost</p>
+                <p><strike class="text-danger">@Model.StrikedCost</strike></p>
+                @*<input type="submit" value="Buy Now" class="btn btn-success" asp-controller="Finance" asp-action="BuyProduct" />*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            @using (Html.BeginForm("GetProductDetails", "Finance", FormMethod.Post))
+            {
+                <label for="EmiScheme">Emi Period</label>
+                <select id="Emi">
+                    <option selected>Emi</option>
+                    <option value=3>3 Months</option>
+                    <option value=6>6 Months</option>
+                    <option value=9>9 Months</option>
+                    <option value=12>12 Months</option>
+                </select>
+                <input type="submit" onclick="CalculateEMI()" value="Pay Now" /> @* js method to calculate emi*@
+             }
+        </div>
+    </div>
+</div>
+@{ 
+    <script>
+        function CalculateEMI() {
+
+        }
+    </script>
+}

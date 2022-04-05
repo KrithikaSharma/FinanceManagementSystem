@@ -26,6 +26,7 @@ namespace Finance_29Mar.Models
         public string IfscCode { get; set; }
         public DateTime Dob { get; set; }
         public string Cardtype { get; set; }
+        public string ResetPasswordCode { get; set; }
 
         public virtual ICollection<CardStatus> CardStatuses { get; set; }
         public virtual ICollection<Purchase> Purchases { get; set; }
