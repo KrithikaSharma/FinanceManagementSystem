@@ -36,7 +36,7 @@ namespace Finance_29Mar.Controllers
                 //fc.Add(c); 
                 fc.SaveChanges();
                 TempData["msg"] = "User registered succesfully!!!";
-                return View("Display", "Product");
+                return RedirectToAction("Login");
             }
             else
             {
@@ -55,6 +55,10 @@ namespace Finance_29Mar.Controllers
         [HttpPost]
         public IActionResult Login([Bind] valLogin lg)
         {
+            //int cardstatus = (from cno in fc.Customers
+             //                 join cn in CardStatus );
+
+
             int res = dbobj.LoginCheck(lg);
             if (res == 1)
             {
@@ -82,14 +86,17 @@ namespace Finance_29Mar.Controllers
             Product pList = (from p in fc.Products
                              where id == p.ProductId
                              select p).FirstOrDefault();
+
             return View(pList);
         }
 
+
+        /*
         [HttpPost]
         public IActionResult GetProductDetails(int emi)
         {
 
         }
-
+        */
     }
 }

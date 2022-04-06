@@ -6,8 +6,8 @@
 <h1>GetProductDetails</h1>
 
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-nav bg-white border-bottom box-shadow mb-3">
+        <div class="container" style="background-image">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Content">FMS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -36,9 +36,8 @@
             <div>
                 <h6>@Model.ProductName</h6>
                 <p>@Model.Description</p>
-                <p>@Model.ProductCost</p>
+                <p id="pcost">@Model.ProductCost</p>
                 <p><strike class="text-danger">@Model.StrikedCost</strike></p>
-                @*<input type="submit" value="Buy Now" class="btn btn-success" asp-controller="Finance" asp-action="BuyProduct" />*@
             </div>
         </div>
     </div>
@@ -55,15 +54,23 @@
                     <option value=9>9 Months</option>
                     <option value=12>12 Months</option>
                 </select>
-                <input type="submit" onclick="CalculateEMI()" value="Pay Now" /> @* js method to calculate emi*@
-             }
+                <input type="button" onclick="CalculateEMI()" class="btn btn-success" value="Calculate EMI" /> <br/>
+                <p id="MonthlyEmi"></p>
+            }
         </div>
     </div>
 </div>
-@{ 
+@{
     <script>
         function CalculateEMI() {
-
+            var value = document.getElementById("Emi");
+            if (value.options[value.selectedIndex].value != 'Emi') {
+                var getvalue = value.options[value.selectedIndex].value;
+                var pc = document.getElementById("pcost").innerHTML;
+                var Emi1 = (pc / parseInt(getvalue));
+                alert("Emi per a month is: " + Emi1);
+                document.getElementById("MonthlyEmi").innerHTML = "Your monthly EMI is: " + Emi1;
+            }
         }
     </script>
 }
